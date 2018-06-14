@@ -23,6 +23,8 @@ if [[ -z ${FILENAME} ]]; then
     exit 1
 fi
 
+pandoc -s -t context $FILENAME -o $FILENAME.pdf
+
 ## Back end
 TEMPFILE=$(stat -c%s "$FILENAME")
 while :
