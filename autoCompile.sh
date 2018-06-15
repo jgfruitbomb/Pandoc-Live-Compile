@@ -23,7 +23,7 @@ if [[ -z ${FILENAME} ]]; then
     exit 1
 fi
 
-pandoc -s -t context $FILENAME -o $FILENAME.pdf
+pandoc $FILENAME -o $FILENAME.pdf
 
 ## Back end
 TEMPFILE=$(stat -c%s "$FILENAME")
@@ -33,7 +33,7 @@ do
 CURRENTFILE=$(stat -c%s "$FILENAME") 
 
 if [ "$TEMPFILE" != "$CURRENTFILE" ]; then 
-    pandoc -s -t context $FILENAME -o $FILENAME.pdf
+    pandoc $FILENAME -o $FILENAME.pdf
     echo -e "compiled and output to $FILENAME"
     TEMPFILE=$(stat -c%s "$FILENAME")
 fi
